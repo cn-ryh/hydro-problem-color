@@ -1,8 +1,4 @@
-// import { addPage, NamedPage } from "@cn_ryh/hydrooj-dev-ui-default";
-// import { addPage, NamedPage } from "../../ui-default";
-// import { addPage as p, NamedPage as t} from "/root/Hydro/packages/ui-default/api";
 import { addPage, NamedPage } from '@hydrooj/ui-default'
-// import { addPage, NamedPage } from "@hydrooj/ui-default";
 import $ from 'jquery'
 /**
  * 将难度数字转化为标签形式
@@ -15,28 +11,29 @@ function translateDifficult(difficulty: number): string {
     }
     switch (difficulty) {
         case 0: case 1: case 2:
-            return '<span style="background-color: rgb(254, 76, 97);">入门</span>';
+            return '<span style="background-color: rgb(254, 76, 97);color: white">入门</span>';
         case 3: case 4:
-            return '<span style="background-color: rgb(243, 156, 17);">普及-</span>';
+            return '<span style="background-color: rgb(243, 156, 17);color: white">普及-</span>';
         case 5: case 6:
-            return '<span style="background-color: rgb(255, 193, 22);">普及/提高-</span>';
+            return '<span style="background-color: rgb(255, 193, 22);color: white">普及/提高-</span>';
         case 7:
-            return '<span style="background-color: rgb(82, 196, 26);">普及+/提高</span>';
+            return '<span style="background-color: rgb(82, 196, 26);color: white">普及+/提高</span>';
         case 8:
-            return '<span style="background-color: rgb(52, 152, 219);">提高+/省选-</span>';
+            return '<span style="background-color: rgb(52, 152, 219);color: white">提高+/省选-</span>';
         case 9:
-            return '<span style="background-color: rgb(157, 61, 207);">省选/NOI-</span>';
+            return '<span style="background-color: rgb(157, 61, 207);color: white">省选/NOI-</span>';
         case 10: default:
-            return '<span style="background-color: rgb(14, 29, 105);color:white">NOI/NOI+</span>';
+            return '<span style="background-color: rgb(14, 29, 105);color: white">NOI/NOI+</span>';
     }
 }
 addPage(new NamedPage(["problem_main"],
     () => {
         // 加入样式表
         $("head").append(`
-            <style>.col--difficulty { width: 6.375rem !important; }</style>
+            <style>.col--difficulty { width: 6.375rem !important;
+            text-overflow:clip; }</style>
             <style>
-            span {
+            .col--difficulty span {
     display: inline-block;
     padding: 0 8px;
     box-sizing: border-box;
@@ -66,9 +63,8 @@ addPage(new NamedPage(["problem_main"],
 
 addPage(new NamedPage(["problem_detail"], () => {
     $("head").append(`
-            <style>.col--difficulty { width: 6.375rem !important; }</style>
             <style>
-            span {
+            #difficult-block span {
     display: inline-block;
     padding: 0 8px;
     box-sizing: border-box;
